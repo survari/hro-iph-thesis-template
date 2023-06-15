@@ -7,8 +7,8 @@
   authors: (
     "Anton Au'Tor",
   ),
-  date: "6. April 2022",
-  university: image("UNIHRO-Logo_Siegel_4c_54mm__06.png", width: 70%),
+  date: date-today-de(datetime.today()),
+  university: image("UNI-Logo_Siegel_4c_149mm_06.png", width: 70%),
   faculty: "Fakultät für Exemplarität",
   institute: "Institut für Beispielarbeit",
   docent: "Prof. Dr. rer. nat. Peter Musterprofessor",
@@ -21,56 +21,18 @@
 = Einleitung und Motivation
 #lorem(200)
 
-= Aussagenlogik
-#lorem(200)
-
-== Einleitung
-#lorem(200)
-
-== Syntax
-#lorem(200)
-
-== Semantik
-#lorem(200)
-
-== Einschränkungen
-#lorem(100)
-
-= Prädikatenlogik
-#lorem(200)
-
-== Einleitung
-#lorem(200)
-
-== Syntax
-#lorem(240)
-
-== Semantik
+= Hauptteil
 #lorem(300)
 
-== Einschränkungen
-#lorem(100)
-
-= Logik höherer Stufe
-#lorem(250)
-
-== Einleitung
+== Herkunft des Lorem Ipsum
+#lorem(300)
+#lorem(200)
 #lorem(400)
 
-== Syntax
-#lorem(450)
-
-== Semantik
+== Verwendung des Lorem Ipsum
 #lorem(300)
-
-== Einschränkungen
 #lorem(100)
+#lorem(200)
 
-= Typentheorie
+= Schluss
 #lorem(300)
-
-= Modallogik
-#lorem(200)
-
-= Temporallogik
-#lorem(200)

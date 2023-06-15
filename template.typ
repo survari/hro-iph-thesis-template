@@ -1,6 +1,12 @@
 #import "outline-template.typ": *
 
-#let SUMMER_MONTHS = ("April", "Mai", "Juni", "Juli", "August", "September")
+#let MONTHS = ("Januar", "Februar", "März", "April", "Mai", "Juni",
+  "Juli", "August", "Septbember", "Oktober", "November", "Dezember")
+
+#let SUMMER_MONTHS = ("April", "Mai", "Juni", "Juli", "August",
+  "September")
+
+#let date-today-de(date) = date.display("[day padding:zero]")+". "+MONTHS.at(date.month() - 1)+" "+date.display("[year]")
 
 #let project(title: "",
   authors: (),
@@ -13,18 +19,13 @@
   date: "<DATE>",
   address: "<ADDRESS>",
   mail: "<MAIL>",
-  font: "Times New Roman",
-  fontsize: 12pt,
-  show_header: false,
   body) = {
-
-  let author_str = authors.join([, \ ], last: [\ und ])
 
   // date: Day. Month Year
   // Set the document's basic properties.
   set document(author: authors, title: title)
   set page(numbering: "1", number-align: center, paper: "a4")
-  set text(font: font, lang: "de", size: fontsize)
+  set text(font: "Times New Roman", lang: "de", size: 12pt)
   set heading(numbering: "1.1.")
 
   set page(footer: [])
@@ -32,8 +33,8 @@
   align(center)[
     #pad(top: 4em, [
       #set text(size: 14pt)
-      #university
       #v(3em, weak: true)
+      #university
 
       #pad(left: 2em,
         right: 2em,
@@ -69,7 +70,7 @@
         // Author information.
         ..(
           //if authors.len() > 1 { "Autoren:"} else { "Autor:" }, authors.join(", "),
-          "Verfasser:", author_str,
+          "Verfasser:", authors.join([, \ ], last: [\ und ]),
           "Matrikel-Nr.:", matnr,
           "Adresse:", address,
           "E-Mail:", raw(mail),
@@ -108,48 +109,24 @@
 
   pagebreak()
   // outline(indent: true, fill: repeat([.#hide(".")]))
-  counter(page).update(0)
-
   outline()
 
   pagebreak()
   set par(leading: 1.25em)
-
   show heading: e => {
     v(e.level * 0.5em)
     e
     v(e.level * 0.5em)
   }
 
-  if show_header {
-    set page(header: [
-        #table(columns: (20%, 70%, 10%),
-          inset: 0cm,
-          stroke: white,
-          text(size: 10pt, align(left, author_str)),
-          text(size: 10pt, align(center, title)),
-          text(size: 10pt, align(right, counter(page).display() + "/" + locate(loc => counter(page).final(loc).at(0)))))
-        #line(length: 100%)
-      ]
-    )
-
-    set page(margin: (right: 4cm, top: 3cm))
-    set text(size: fontsize)
-  }
-
   set page(footer: align(center, counter(page).display()))
   set page(margin: (right: 4cm))
-
+  counter(page).update(1)
   body
 
   pagebreak()
-  set page(footer: [])
+  set page(footer: [], header: [], margin: (right: 3cm, top: 2cm))
   counter(page).update(e => e - 1)
-
-  if show_header {
-    set page(header: [], footer: [], margin: (right: 3cm, top: 2cm))
-  }
-
 
   heading(outlined: false, numbering: none, [Selbstständigkeitserklärung])
   [Hiermit versichere ich, dass ich die vorliegende schriftliche Hausarbeit (Seminararbeit, Belegarbeit) selbstständig verfasst und keine anderen als die von mir angegebenen Quellen und Hilfsmittel benutzt habe. Die Stellen der Arbeit, die anderen Werken wörtlich oder sinngemäß entnommen sind, wurden in jedem Fall unter Angabe der Quellen (einschließlich des World Wide Web und anderer elektronischer Text- und Datensammlungen) kenntlich gemacht. Dies gilt auch für beigegebene Zeichnungen, bildliche Darstellungen, Skizzen und dergleichen. Ich versichere weiter, dass die Arbeit in gleicher oder ähnlicher Fassung noch nicht Bestandteil einer Prüfungsleistung oder einer schriftlichen Hausarbeit (Seminararbeit, Belegarbeit) war. Mir ist bewusst, dass jedes Zuwiderhandeln als Täuschungsversuch zu gelten hat, aufgrund dessen das Seminar oder die Übung als nicht bestanden bewertet und die Anerkennung der Hausarbeit als Leistungsnachweis/Modulprüfung (Scheinvergabe) ausgeschlossen wird. Ich bin mir weiter darüber im Klaren, dass das zuständige Lehrerprüfungsamt/Studienbüro über den Betrugsversuch informiert werden kann und Plagiate rechtlich als Straftatbestand gewertet werden.]

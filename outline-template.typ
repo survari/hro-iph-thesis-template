@@ -2,11 +2,10 @@
   heading(title, numbering: none)
 
   locate(it => {
-    let elements = query(heading, after: it)
+    let elements = query(selector(heading).after(it), it)
 
-    for i, e in elements {
-      if depth != none and r.level > depth { continue }
-      if e.outlined == false { continue }
+    for (i, e) in elements.enumerate() {
+      if e.outlined == false or (depth != none and r.level > depth) { continue }
 
       let number = if e.numbering != none {
         numbering(e.numbering, ..counter(heading).at(e.location()))
