@@ -4,9 +4,11 @@
 // to customize this template and discover how it works.
 #show: project.with(
   title: "Abhandlung über das Schreiben einer Hausarbeit",
+
   authors: (
     "Anton Au'Tor",
   ),
+
   date: date-today-de(datetime.today()),
   university: image("UNI-Logo_Siegel_4c_149mm_06.png", width: 50%),
   faculty: "Fakultät für Exemplarität",

@@ -9,8 +9,6 @@
 #let date-today-de(date) = date.display("[day padding:zero]")+". "+MONTHS.at(date.month() - 1)+" "+date.display("[year]")
 
 #let gen-date(date) = {
-  v(2cm, weak: true)
-
   if date.split(" ").len() < 2 {
     "<SEMESTER>"
 
@@ -40,80 +38,69 @@
   mail: "<MAIL>",
   body) = {
 
-  // date: Day. Month Year
-  // Set the document's basic properties.
+  // ==== document setup ========
   set document(author: authors, title: title)
   set page(numbering: "1", number-align: center, paper: "a4")
   set text(font: "Times New Roman", lang: "de", size: 12pt)
   set heading(numbering: "1.1.")
 
+  // ==== first page ========
   set page(footer: [])
-  // Title row.
   align(center + horizon, [
-      #set text(size: 14pt)
-      // #v(3em, weak: true)
-      // #v(3em, weak: true)
+    // make font title page a bit bigger than in the rest of the document
+    #set text(size: 1.25em)
 
-      // Title
-      #pad(right: 2em,
-        left: 2em, [
+    // title
+    #pad(right: 2em, left: 2em, block(text(2em, strong(title))))
 
-        // #v(1.5em, weak: true)
-        // #line(length: 100%)
-        // #v(1.5em, weak: true)
-        #block(text(2em, strong(title)))
-        // #v(1.6em, weak: true)
-        // #line(length: 100%)
-        // #v(1.5em, weak: true)
-      ])
+    #v(2cm)
+    // university
+    #text(size: 1.25em, university)
 
-      // #v(0.5cm)
-      // #text(size: 1.25em, authors.join([, \ ], last: [\ und ]))
+    // generate table
+    #align(top, pad(left: 2em, right: 2em,
+      table(stroke: white, columns: (40%, 60%),
 
-      #v(2cm)
-      #university
+      ..("Fakultät:", faculty,
+        "Institut:", institute,
+        "Dozent:", docent,
+        "Veranstaltung:", course,
+        "", "", // one free line
 
-      #align(top, pad(left: 2em,
-        right: 2em,
-        table(stroke: white, columns: (40%, 60%),
-        ..("Fakultät:", faculty,
-          "Institut:", institute,
-          "Dozent:", docent,
-          "Veranstaltung:", course,
-          //if authors.len() > 1 { "Autoren:"} else { "Autor:" }, authors.join(", "),
-          "", "",
+        "Verfasser:", authors.join([, \ ], last: [\ und ]),
+        "Matrikel-Nr.:", matnr,
+        "Adresse:", address,
+        "E-Mail:", raw(mail),
 
-          "Verfasser:", authors.join([, \ ], last: [\ und ]),
-          "Matrikel-Nr.:", matnr,
-          "Adresse:", address,
-          "E-Mail:", raw(mail),
-        ).map(e =>
-          if type(e) == "string" and e.trim().ends-with(":") {
-            strong(align(right)[#e])
-          } else {
-            align(left)[#e]
-          }
-        )
-      )))
+      ).map(e =>
+        if type(e) == "string" and e.trim().ends-with(":") {
+          strong(align(right)[#e])
+        } else {
+          align(left)[#e]
+        }
+      )
+    )))
 
-      #v(2cm)
-      #block(gen-date(date))
+    #v(2cm)
+    // display date and semester
+    #gen-date(date)
   ])
 
-  // Main body.
-  set par(justify: true)
-
   pagebreak()
-  // outline(indent: true, fill: repeat([.#hide(".")]))
+
+  // ==== outline ========
+  set par(justify: true)
   outline()
 
   pagebreak()
+
+  // ==== main body ========
+
+  // 1.5 line distance, but approximated as 1.25em
   set par(leading: 1.25em)
-  show heading: e => {
-    v(e.level * 0.5em)
-    e
-    v(e.level * 0.5em)
-  }
+
+  // make each heading have some space around it
+  show heading: e => v(e.level * 0.5em) + e + v(e.level * 0.5em)
 
   set page(footer: align(center, counter(page).display()))
   set page(margin: (right: 4cm))
