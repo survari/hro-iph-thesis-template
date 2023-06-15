@@ -12,20 +12,20 @@
         " "
       }
 
-      let line = {
+      let line = box(inset: (top: if e.level == 1 {
+        1em
+      } else {
+        0.5em
+      }), {
         if indent {
           h(1em * (e.level - 1 ))
         }
 
         if e.level == 1 {
-          v(weak: true, 0.5em)
-          set text(weight: "bold")
-          number
-          e.body
+          strong(number + e.body)
 
         } else {
-          number
-          e.body
+          number + e.body
         }
 
         // Filler dots
@@ -35,7 +35,7 @@
         let page_number = counter(page).at(e.location()).first()
         str(page_number)
         linebreak()
-      }
+      })
 
       link(e.location(), line)
     }
