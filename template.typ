@@ -8,6 +8,25 @@
 
 #let date-today-de(date) = date.display("[day padding:zero]")+". "+MONTHS.at(date.month() - 1)+" "+date.display("[year]")
 
+#let gen-date(date) = {
+  v(2cm, weak: true)
+
+  if date.split(" ").len() < 2 {
+    "<SEMESTER>"
+
+  } else {
+    let year = date.split(" ").at(2).slice(2)
+
+    if date.split(" ").at(1) in SUMMER_MONTHS {
+      "Sommersemester 20" + year
+    } else {
+      "Wintersemester 20" + year + "/" + str(int(year) + 1)
+    }
+  }
+
+  [\ #date]
+}
+
 #let project(title: "",
   authors: (),
   university: "<UNIVERSITY>",
@@ -30,46 +49,40 @@
 
   set page(footer: [])
   // Title row.
-  align(center)[
-    #pad(top: 4em, [
+  align(center + horizon, [
       #set text(size: 14pt)
-      #v(3em, weak: true)
+      // #v(3em, weak: true)
+      // #v(3em, weak: true)
+
+      // Title
+      #pad(right: 2em,
+        left: 2em, [
+
+        // #v(1.5em, weak: true)
+        // #line(length: 100%)
+        // #v(1.5em, weak: true)
+        #block(text(2em, strong(title)))
+        // #v(1.6em, weak: true)
+        // #line(length: 100%)
+        // #v(1.5em, weak: true)
+      ])
+
+      // #v(0.5cm)
+      // #text(size: 1.25em, authors.join([, \ ], last: [\ und ]))
+
+      #v(2cm)
       #university
 
-      #pad(left: 2em,
+      #align(top, pad(left: 2em,
         right: 2em,
         table(stroke: white, columns: (40%, 60%),
         ..("Fakultät:", faculty,
-        "Institut:", institute,
-        "Dozent:", docent,
-        "Veranstaltung:", course).map(e =>
-          if type(e) == "string" and e.trim().ends-with(":") {
-            strong(align(right)[#e])
-          } else {
-            align(left)[#e]
-          }
-        )
-      ))
-
-      // Title
-      #pad(right: 4em,
-        left: 4em, [
-
-        #v(1.5em, weak: true)
-        #line(length: 100%)
-        #v(1.5em, weak: true)
-        #block(text(weight: 700, 1.75em, title))
-        #v(1.6em, weak: true)
-        #line(length: 100%)
-        #v(1.5em, weak: true)
-      ])
-
-      #pad(left: 2em,
-        right: 2em,
-        table(stroke: white, columns: (40%, 60%),
-        // Author information.
-        ..(
+          "Institut:", institute,
+          "Dozent:", docent,
+          "Veranstaltung:", course,
           //if authors.len() > 1 { "Autoren:"} else { "Autor:" }, authors.join(", "),
+          "", "",
+
           "Verfasser:", authors.join([, \ ], last: [\ und ]),
           "Matrikel-Nr.:", matnr,
           "Adresse:", address,
@@ -81,28 +94,11 @@
             align(left)[#e]
           }
         )
-      ))
+      )))
 
-      #{
-        v(3em, weak: true)
-
-        if date.split(" ").len() < 2 {
-          "<SEMESTER>"
-
-        } else {
-          let year = date.split(" ").at(2).slice(2)
-
-          if date.split(" ").at(1) in SUMMER_MONTHS {
-            "Sommersemester 20" + year
-          } else {
-            "Wintersemester 20" + year + "/" + str(int(year) + 1)
-          }
-        }
-
-        [\ #date]
-      }
-    ])
-  ]
+      #v(2cm)
+      #block(gen-date(date))
+  ])
 
   // Main body.
   set par(justify: true)

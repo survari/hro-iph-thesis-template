@@ -8,7 +8,7 @@
     "Anton Au'Tor",
   ),
   date: date-today-de(datetime.today()),
-  university: image("UNI-Logo_Siegel_4c_149mm_06.png", width: 70%),
+  university: image("UNI-Logo_Siegel_4c_149mm_06.png", width: 50%),
   faculty: "Fakultät für Exemplarität",
   institute: "Institut für Beispielarbeit",
   docent: "Prof. Dr. rer. nat. Peter Musterprofessor",
