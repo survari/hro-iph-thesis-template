@@ -100,7 +100,7 @@
   set par(leading: 1.25em)
 
   // make each heading have some space around it
-  show heading: e => v(e.level * 0.5em) + e + v(e.level * 0.5em)
+  show heading: e => v(2em, weak: true) + e + v(1em, weak: true)
 
   set page(footer: align(center, counter(page).display()))
   set page(margin: (right: 4cm))
