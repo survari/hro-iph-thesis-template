@@ -25,6 +25,12 @@
   [\ #date]
 }
 
+#let todo(body) = block(inset: 1em,
+  stroke: (left: 1pt + red),
+  width: 100%,
+  fill: red.lighten(90%),
+  pad(bottom: 0.5em, strong[To Do])+body)
+
 #let project(title: "",
   authors: (),
   university: "<UNIVERSITY>",
