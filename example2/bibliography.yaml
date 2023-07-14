@@ -1,0 +1,64 @@
+Bealer1998: # S. 803 ff. https://archive.org/details/routledgeencyclo0004unse/page/804/mode/2up
+  entry-type: lexicon
+  author: George Bealer
+  title: Intensional entities
+  booktitle: Routledge Encyclopedia of Philosophy
+  publisher: Edward Craig
+  volume: 4
+  volume-title: Irigaray, Luce -- Lushi chunqiu
+  location: London (UK), New York (USA)
+  year: 1998
+  pages: 803-807
+  section: primary
+
+Beth1960:
+  entry-type: article
+  author: Evert Willem Beth
+  title: Extension and Intension
+  journal: Synthese
+  volume: 12
+  issue: 4
+  year: 2012
+  pages: 238-249
+  section: primary
+
+BräunerGhilardi2007:
+  entry-type: collection-article
+  author:
+  - Torben Braüner
+  - Silbio Ghilardi
+  title: First-Order Modal Logic
+  booktitle: Hanbook of Modal Logic
+  publisher:
+  - Patrick Blackburn
+  - Johan Van Benthem
+  - Frank Wolter
+  year: 2007
+  location: Amsterdam (Niederlande)
+  pages: 550-613
+  section: primary
+
+Thiel1965:
+  entry-type: monography
+  author: Christian Thiel
+  title: Sinn und Bedeutung in der Logik Gottlob Freges
+  subtitle: Monographien zur philosophischen Forschung, Band 43
+  location: "Meisenheim am Glan"
+  year: 1965
+  section: secondary
+
+Kähle2005:
+  entry-type: collection
+  author: Reinhard Kähle
+  title: Intensionality
+  location: Cambridge (England)
+  year: 2005
+  section: primary
+
+Blaber2023:
+  entry-type: url
+  author: Richard M. Blaber
+  title: "There Is A Set of All Truths: A Reply to Patrick Grim."
+  url: "https://doi.org/10.31235/osf.io/pj7xm"
+  year: "06.07.2023"
+  section: secondary

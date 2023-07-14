@@ -1,16 +1,15 @@
-#import "template.typ": *
+#import "@local/hro-iph-thesis:0.1.0": thesis
 
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
-#show: project.with(
+#show: thesis.with(
   title: "Abhandlung über das Schreiben einer Hausarbeit",
 
   authors: (
     "Anton Au'Tor",
   ),
 
-  date: date-today-de(datetime.today()),
-  university: image("UNI-Logo_Siegel_4c_149mm_06.png", width: 50%),
+  date: datetime.today(),
   faculty: "Fakultät für Exemplarität",
   institute: "Institut für Beispielarbeit",
   docent: "Prof. Dr. rer. nat. Peter Musterprofessor",

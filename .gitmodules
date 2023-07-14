@@ -1,0 +1,3 @@
+[submodule "example2/typst-custombib"]
+	path = example2/typst-custombib
+	url = https://github.com/survari/typst-custombib

@@ -1,4 +1,4 @@
-#import "outline-template.typ": *
+// #import "outline-template.typ": *
 
 #let MONTHS = ("Januar", "Februar", "März", "April", "Mai", "Juni",
   "Juli", "August", "Septbember", "Oktober", "November", "Dezember")
@@ -31,9 +31,9 @@
   fill: red.lighten(90%),
   pad(bottom: 0.5em, strong[To Do])+body)
 
-#let project(title: "",
+#let thesis(title: "",
   authors: (),
-  university: "<UNIVERSITY>",
+  university: none,
   faculty: "<FACULTY>",
   institute: "<INSTITUTE>",
   docent: "<DOCENT>",
@@ -61,7 +61,11 @@
 
     #v(2cm)
     // university
-    #text(size: 1.25em, university)
+    #if university == none {
+      image("UNI-Logo_Siegel_4c_149mm_06.png", width: 50%)
+    } else {
+      text(size: 1.25em, university)
+    }
 
     // generate table
     #align(top, pad(left: 2em, right: 2em,
@@ -89,14 +93,21 @@
 
     #v(2cm)
     // display date and semester
-    #gen-date(date)
+    #gen-date(date-today-de(date))
   ])
 
   pagebreak()
+  set page(margin: (right: 4cm))
 
   // ==== outline ========
   set par(justify: true)
-  outline()
+  show outline.entry.where(
+    level: 1
+  ): it => {
+    v(12pt, weak: true)
+    strong(it)
+  }
+  outline(indent: true)
 
   pagebreak()
 
@@ -109,12 +120,11 @@
   show heading: e => v(2em, weak: true) + e + v(1em, weak: true)
 
   set page(footer: align(center, counter(page).display()))
-  set page(margin: (right: 4cm))
   counter(page).update(1)
   body
 
   pagebreak()
-  set page(footer: [], header: [], margin: (right: 3cm, top: 2cm))
+  // set page(footer: [], header: [], margin: (right: 3cm, top: 2cm)) // lets not use this anymore
   counter(page).update(e => e - 1)
 
   heading(outlined: false, numbering: none, [Selbstständigkeitserklärung])
@@ -126,8 +136,10 @@
     stroke: white,
     inset: 0cm,
 
-    strong([Ort, Datum:]) + h(0.5cm),
+    strong([Ort:]) + h(0.5cm),
     repeat("."+hide("'")),
     h(0.5cm) + strong([Unterschrift:]) + h(0.5cm),
-    repeat("."+hide("'")))
+    repeat("."+hide("'")),
+    v(0.75cm) + strong([Datum:]) + h(0.5cm),
+    v(0.75cm) + repeat("."+hide("'")),)
 }
