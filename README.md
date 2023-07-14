@@ -54,4 +54,4 @@ The `entry-type` can be one of the following, each having custom fields (optiona
 - `collection`: authors, title, year, location, (volume, volume-title, edition)
 - `collection-article`: authors, title, publisher, location, year, (pages, volume, volume-title)
 
-See [`example2/example2.typ`](example/example2.pdf) for a working example.
+See [`example2/example2.typ`](example2/example2.pdf) for a working example.
