@@ -1,8 +1,8 @@
 [package]
-name = "hro-iph-thesis"
+name = "hro-iph-seminar-paper"
 version = "0.1.0"
 entrypoint = "template.typ"
 authors = ["Survari"]
 license = "Unlicense"
-repository = "https://github.com/survari/typst-hro-iph-thesis"
+repository = "https://github.com/survari/typst-hro-iph-seminar-paper"
 description = "Unofficial template for the Institute of Philosophy at the University of Rostock."

@@ -1,8 +1,8 @@
-#import "@local/hro-iph-thesis:0.1.0": thesis
+#import "@local/hro-iph-seminar-paper:0.1.0": seminar-paper
 
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
-#show: thesis.with(
+#show: seminar-paper.with(
   title: "Abhandlung über das Schreiben einer Hausarbeit",
 
   authors: (

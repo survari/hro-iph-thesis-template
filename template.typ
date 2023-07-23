@@ -31,7 +31,7 @@
   fill: red.lighten(90%),
   pad(bottom: 0.5em, strong[To Do])+body)
 
-#let thesis(title: "",
+#let seminar-paper(title: "",
   authors: (),
   university: none,
   faculty: "<FACULTY>",

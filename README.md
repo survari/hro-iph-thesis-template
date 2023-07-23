@@ -1,4 +1,4 @@
-# HRO IPH Thesis Template
+# HRO IPH Seminar Paper Template
 
 Inofficial template following the standards of the Institute of Philosophy's Methodenüberlebenskoffer (MÜK, "methods survival kit") at the University of Rostock.
 
@@ -7,13 +7,13 @@ Inofficial template following the standards of the Institute of Philosophy's Met
 Either install it as a local package and import it using:
 
 ```
-#import "@local/hro-iph-thesis:0.1.0": thesis
+#import "@local/hro-iph-seminar-paper:0.1.0": seminar-paper
 ```
 
 or copy the `template.typ` into your typst project and import it using:
 
 ```
-#import "template.typ": thesis
+#import "template.typ": seminar-paper
 ```
 
 ## Bibliography
