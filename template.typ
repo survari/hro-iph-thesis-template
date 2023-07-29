@@ -32,6 +32,7 @@
   pad(bottom: 0.5em, strong[To Do])+body)
 
 #let seminar-paper(title: "",
+  strtitle: none,
   authors: (),
   university: none,
   faculty: "<FACULTY>",
@@ -45,7 +46,7 @@
   body) = {
 
   // ==== document setup ========
-  set document(author: authors, title: title)
+  set document(author: authors, title: if strtitle == none { title } else { strtitle })
   set page(numbering: "1", number-align: center, paper: "a4")
   set text(font: "Times New Roman", lang: "de", size: 12pt)
   set heading(numbering: "1.1.")
