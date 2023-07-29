@@ -248,11 +248,7 @@
         citation-end: (entry, citation) => citation,
 
         // format single citation inside
-        format: (entry, citation) => footnote[
-            #ifhaskey(entry, "prefix", e => e.prefix+[ ])
-            #citation
-            #ifhaskey(entry, "postfix", e => e.postfix+[ ])
-        ],
+        format: (entry, citation) => [#ifhaskey(entry, "prefix", e => e.prefix+[ ]) #citation #ifhaskey(entry, "postfix", e => e.postfix+[ ])],
 
         // on multiple citations, wrap all of them into this
         wrap-multi: (citations) => [#citations],
