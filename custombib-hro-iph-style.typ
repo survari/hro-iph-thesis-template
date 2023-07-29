@@ -227,7 +227,7 @@
     // for entry-type "custom"
     custom: (
         sort-by: "marker",
-        inline: (entry) => [#ifhaskey(entry, "prefix", e => (e.prefix+" "))#eval("["+entry.show-inline+"]")#ifhaskey(entry, "postfix", e => (" "+e.postfix))],
+        inline: (entry) => [#ifhaskey(entry, "prefix", e => (e.prefix+" "))#eval("["+entry.show-inline+"]")],//#ifhaskey(entry, "postfix", e => (" "+e.postfix))],
         bibliography: (entry) => [#eval("["+entry.show-bibliography+"]").]
     ),
 

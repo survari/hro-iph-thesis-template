@@ -29,7 +29,9 @@
   stroke: (left: 1pt + red),
   width: 100%,
   fill: red.lighten(90%),
-  pad(bottom: 0.5em, strong[To Do])+body)
+  pad(bottom: 0.5em, smallcaps[#strong[To Do]])+body)
+
+#let inline-todo(body) = box(fill: red.lighten(90%), outset: 1pt, text(red.darken(20%), size: 0.75em, smallcaps(strong(box(inset: 2pt, stroke: red)[To Do:])))+h(0.5em)+body)
 
 #let seminar-paper(title: "",
   strtitle: none,
@@ -118,7 +120,7 @@
   set par(leading: 1.25em)
 
   // make each heading have some space around it
-  show heading: e => v(2em, weak: true) + e + v(1em, weak: true)
+  show heading: e => v(1.75em, weak: true) + e + v(1em, weak: true)
 
   set page(footer: align(center, counter(page).display()))
   counter(page).update(1)
